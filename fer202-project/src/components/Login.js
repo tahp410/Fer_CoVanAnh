@@ -26,7 +26,7 @@ export default function Login({ isLogin, setIsLogin }) {
           const { password: _pwd, ...accountData } = findAccounts; // do not store password in localStorage
           localStorage.setItem("accounts", JSON.stringify([accountData]));
           setIsLogin && setIsLogin(true);
-          navigate(findAccounts.role === "admin" ? "/productadmin" : "/productuser");
+          navigate(findAccounts.role === "admin" ? "/productadmin" : "/");
         }
       } else {
         alert("Sai Email hoặc Mật Khẩu. Vui lòng nhập lại");

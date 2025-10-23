@@ -44,7 +44,7 @@ function Header({ isLogin, setIsLogin }) {
         position: "top-center",
       });
       localStorage.removeItem("accounts");
-      navigate("/productuser");
+      navigate("/");
     }
   };
 
@@ -75,7 +75,7 @@ function Header({ isLogin, setIsLogin }) {
               style={{ width: "75px", height: "75px", border: "1px solid #ccc", borderRadius: "48px" }}
               onClick={handleOpenAvatarModal}
             />
-            <a href="/productuser" class="text-decoration-none text-white">
+            <a href="/" class="text-decoration-none text-white">
               {" "}
               -Tech Store
             </a>

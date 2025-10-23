@@ -404,7 +404,7 @@ export default function ProductUser({ isLogin }) {
               <Nav.Link
                 style={{ color: "white" }}
                 as={Link}
-                to="/productuser"
+                to="/"
                 onClick={() => {
                   if (window.scrollY === 0) {
                     window.location.reload();

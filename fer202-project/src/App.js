@@ -35,19 +35,8 @@ export default function App() {
                 </>
               }
             />
-            <Route
-              path="/productuser"
-              element={
-                <div style={{ padding: 40 }}>
-                  <h2>Demo Product User Home</h2>
-                  <p>
-                    This is a placeholder home page. After login success the app
-                    navigates here.
-                  </p>
-                </div>
-              }
-            />
-            <Route
+            
+            {/* <Route
               path="/"
               element={
                 <>
@@ -58,7 +47,7 @@ export default function App() {
                   <Footer />
                 </>
               }
-            />
+            /> */}
             <Route
               path="/"
               element={
