@@ -8,6 +8,9 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { ThemeProvider } from "./components/ThemeProvider";
 import ProductUser from "./components/ProductUser";
+import StoreRules from "./hooks/StoreRules";
+import { Term } from '../src/hooks/Term'; 
+
 export default function App() {
   const [isLogin, setIsLogin] = useState(false);
    const [products, setProducts] = useState([]);
@@ -64,6 +67,24 @@ export default function App() {
                 </>
               }
             />{" "}
+            <Route
+              path="/terms"
+              element={
+                <>
+                  <Header isLogin={isLogin} setIsLogin={setIsLogin} />
+                  <Term />
+                </>
+              }
+            />
+            <Route
+              path="/rules"
+              element={
+                <>
+                  <Header isLogin={isLogin} setIsLogin={setIsLogin} />
+                  <StoreRules />
+                </>
+              }
+            />
           </Routes>
         </BrowserRouter>
       </div>
