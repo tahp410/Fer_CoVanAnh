@@ -8,9 +8,12 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { ThemeProvider } from "./components/ThemeProvider";
 import ProductUser from "./components/ProductUser";
+import StoreRules from "./hooks/StoreRules";
+import { Term } from '../src/hooks/Term';
+
 export default function App() {
   const [isLogin, setIsLogin] = useState(false);
-   const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState([]);
   useEffect(() => {
     const accounts = JSON.parse(localStorage.getItem("accounts"));
     if (accounts) setIsLogin(true);
@@ -35,7 +38,7 @@ export default function App() {
                 </>
               }
             />
-            
+
             {/* <Route
               path="/"
               element={
@@ -63,7 +66,27 @@ export default function App() {
                   <Footer />
                 </>
               }
-            />{" "}
+            />
+            <Route path="/accessdenied" element={<AccessDenied />} />
+
+            <Route
+              path="/terms"
+              element={
+                <>
+                  <Header isLogin={isLogin} setIsLogin={setIsLogin} />
+                  <Term />
+                </>
+              }
+            />
+            <Route
+              path="/rules"
+              element={
+                <>
+                  <Header isLogin={isLogin} setIsLogin={setIsLogin} />
+                  <StoreRules />
+                </>
+              }
+            />
           </Routes>
         </BrowserRouter>
       </div>
