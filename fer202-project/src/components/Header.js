@@ -72,7 +72,12 @@ function Header({ isLogin, setIsLogin }) {
               src="/assets/images/avartashop.png"
               alt="H Logo"
               class="img-fluid"
-              style={{ width: "75px", height: "75px", border: "1px solid #ccc", borderRadius: "48px" }}
+              style={{
+                width: "75px",
+                height: "75px",
+                border: "1px solid #ccc",
+                borderRadius: "48px",
+              }}
               onClick={handleOpenAvatarModal}
             />
             <a href="/" class="text-decoration-none text-white">
@@ -81,7 +86,11 @@ function Header({ isLogin, setIsLogin }) {
             </a>
           </h2>
           {/* show ảnh */}
-          <AvatarModal show={showAvatarModal} handleClose={handleCloseAvatarModal} imageSrc="/assets/images/avartashop.png" />
+          <AvatarModal
+            show={showAvatarModal}
+            handleClose={handleCloseAvatarModal}
+            imageSrc="/assets/images/avartashop.png"
+          />
         </Col>
         {/* cột phải chứa nút login-register */}
         <Col className="ml-auto">
@@ -92,12 +101,18 @@ function Header({ isLogin, setIsLogin }) {
                   <>
                     <Nav.Item justify-content-center>
                       <Nav.Link href="/productadmin" style={{ color: "white" }}>
-                        <Button className="bg-danger text-white px-4 py-2 border-0">Giao diện Administrator</Button>
+                        <Button className="bg-danger text-white px-4 py-2 border-0">
+                          Giao diện Administrator
+                        </Button>
                       </Nav.Link>
                     </Nav.Item>
                     <Nav.Item className="justify-content-center mt-2">
                       <Dropdown drop="center">
-                        <Dropdown.Toggle variant="secondary" id="dropdown-basic" className="bg-danger text-white px-4 py-2">
+                        <Dropdown.Toggle
+                          variant="secondary"
+                          id="dropdown-basic"
+                          className="bg-danger text-white px-4 py-2"
+                        >
                           Xin Chào: {accountLogged} <AccountCircleIcon />
                         </Dropdown.Toggle>
                         <Dropdown.Menu className="dropdown-menu-end">
@@ -114,7 +129,14 @@ function Header({ isLogin, setIsLogin }) {
                           <Dropdown.Item onClick={handleChangeAccount}>
                             <SyncAltIcon /> Chuyển Tài Khoản
                           </Dropdown.Item>
-                          <Dropdown.Item onClick={toggleTheme}>{toggleTheme ? <Brightness4Icon /> : <Brightness7Icon />} Mode: Sáng|Tối</Dropdown.Item>
+                          <Dropdown.Item onClick={toggleTheme}>
+                            {toggleTheme ? (
+                              <Brightness4Icon />
+                            ) : (
+                              <Brightness7Icon />
+                            )}{" "}
+                            Mode: Sáng|Tối
+                          </Dropdown.Item>
                         </Dropdown.Menu>
                       </Dropdown>
                     </Nav.Item>
@@ -124,7 +146,10 @@ function Header({ isLogin, setIsLogin }) {
                 {accountRole === "user" && (
                   <>
                     <Nav.Item justify-content-center>
-                      <Nav.Link href="/order-tracking" style={{ color: "white" }}>
+                      <Nav.Link
+                        href="/order-tracking"
+                        style={{ color: "white" }}
+                      >
                         <Button className="bg-danger text-white px-4 py-2 border-0">
                           Theo dõi đơn hàng <ShoppingCartIcon />
                         </Button>
@@ -132,7 +157,11 @@ function Header({ isLogin, setIsLogin }) {
                     </Nav.Item>
                     <Nav.Item className="justify-content-center mt-2">
                       <Dropdown>
-                        <Dropdown.Toggle variant="secondary" id="dropdown-basic" className="bg-danger text-white px-4 py-2 border-0">
+                        <Dropdown.Toggle
+                          variant="secondary"
+                          id="dropdown-basic"
+                          className="bg-danger text-white px-4 py-2 border-0"
+                        >
                           Xin Chào: {accountLogged} <AccountCircleIcon />
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
@@ -149,7 +178,14 @@ function Header({ isLogin, setIsLogin }) {
                           <Dropdown.Item onClick={handleChangeAccount}>
                             <SyncAltIcon /> Chuyển Tài Khoản
                           </Dropdown.Item>
-                          <Dropdown.Item onClick={toggleTheme}>{toggleTheme ? <Brightness4Icon /> : <Brightness7Icon />} Mode: Sáng|Tối</Dropdown.Item>
+                          <Dropdown.Item onClick={toggleTheme}>
+                            {toggleTheme ? (
+                              <Brightness4Icon />
+                            ) : (
+                              <Brightness7Icon />
+                            )}{" "}
+                            Mode: Sáng|Tối
+                          </Dropdown.Item>
                         </Dropdown.Menu>
                       </Dropdown>
                     </Nav.Item>
