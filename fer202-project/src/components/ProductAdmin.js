@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Row, Col, Button, Table, Modal, Form, Nav, Tab } from "react-bootstrap";
+import {
+  Row,
+  Col,
+  Button,
+  Table,
+  Modal,
+  Form,
+  Nav,
+  Tab,
+} from "react-bootstrap";
 import { toast } from "react-toastify";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -169,6 +178,18 @@ function ProductAdmin({ isLogin, setIsLogin }) {
                   <Nav.Link eventKey="orders">Quản Lý Đơn Hàng</Nav.Link>
                 </Nav.Item>
               </Nav>
+              <Button
+                variant="info"
+                as={Link}
+                to="/User/productUser"
+                style={{
+                  display: "block",
+                  width: "100%",
+                  marginTop: "10px",
+                }}
+              >
+                Quản Lý Tài Khoản
+              </Button>
             </Col>
             <Col sm={9}>
               <Tab.Content>
@@ -180,67 +201,79 @@ function ProductAdmin({ isLogin, setIsLogin }) {
                     >
                       + Thêm Sản Phẩm Mới
                     </Button>
-                    <Table striped bordered hover responsive className="admin-table">
-                        <thead>
-                          <tr>
-                            <th>ID</th>
-                            <th>Ảnh</th>
-                            <th>Tên</th>
-                            <th>Giá</th>
-                            <th>Số lượng</th>
-                            <th>Trạng thái</th>
-                            <th>Thao tác</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {products.map((product) => (
-                            <tr key={product.id}>
-                              <td>{product.id}</td>
-                              <td>
-                                <img
-                                  src={product.image}
-                                  alt={product.name}
-                                  style={{ width: "50px", height: "50px", objectFit: "cover" }}
-                                />
-                              </td>
-                              <td>{product.name}</td>
-                              <td>
-                                {product.price.toLocaleString("vi-VN", {
-                                  style: "currency",
-                                  currency: "VND",
-                                })}
-                              </td>
-                              <td>{product.quantity}</td>
-                              <td>
-                                <span className={`admin-status-badge ${
-                                  product.status === "Còn hàng" 
-                                    ? "admin-status-available" 
+                    <Table
+                      striped
+                      bordered
+                      hover
+                      responsive
+                      className="admin-table"
+                    >
+                      <thead>
+                        <tr>
+                          <th>ID</th>
+                          <th>Ảnh</th>
+                          <th>Tên</th>
+                          <th>Giá</th>
+                          <th>Số lượng</th>
+                          <th>Trạng thái</th>
+                          <th>Thao tác</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {products.map((product) => (
+                          <tr key={product.id}>
+                            <td>{product.id}</td>
+                            <td>
+                              <img
+                                src={product.image}
+                                alt={product.name}
+                                style={{
+                                  width: "50px",
+                                  height: "50px",
+                                  objectFit: "cover",
+                                }}
+                              />
+                            </td>
+                            <td>{product.name}</td>
+                            <td>
+                              {product.price.toLocaleString("vi-VN", {
+                                style: "currency",
+                                currency: "VND",
+                              })}
+                            </td>
+                            <td>{product.quantity}</td>
+                            <td>
+                              <span
+                                className={`admin-status-badge ${
+                                  product.status === "Còn hàng"
+                                    ? "admin-status-available"
                                     : "admin-status-out-of-stock"
-                                }`}>
-                                  {product.status}
-                                </span>
-                              </td>
-                              <td>
-                                <Button
-                                  className="admin-btn-edit"
-                                  size="sm"
-                                  onClick={() => handleEditProduct(product)}
-                                >
-                                  Sửa
-                                </Button>
-                                <Button
-                                  className="admin-btn-delete"
-                                  size="sm"
-                                  onClick={() => handleDeleteProduct(product.id)}
-                                >
-                                  Xóa
-                                </Button>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </Table>
-                    </div>
+                                }`}
+                              >
+                                {product.status}
+                              </span>
+                            </td>
+                            <td>
+                              <Button
+                                className="admin-btn-edit"
+                                size="sm"
+                                onClick={() => handleEditProduct(product)}
+                              >
+                                Sửa
+                              </Button>
+                              <Button
+                                className="admin-btn-delete"
+                                size="sm"
+                                onClick={() => handleDeleteProduct(product.id)}
+                              >
+                                Xóa
+                              </Button>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </Table>
+                  </div>
                 </Tab.Pane>
                 <Tab.Pane eventKey="orders">
                   <OrderManagement />
@@ -251,9 +284,9 @@ function ProductAdmin({ isLogin, setIsLogin }) {
         </Tab.Container>
 
         {/* Modal Add/Edit Product */}
-        <Modal 
-          show={showModal} 
-          onHide={() => setShowModal(false)} 
+        <Modal
+          show={showModal}
+          onHide={() => setShowModal(false)}
           size="lg"
           className="admin-modal"
         >
@@ -265,12 +298,16 @@ function ProductAdmin({ isLogin, setIsLogin }) {
           <Modal.Body>
             <Form onSubmit={handleSubmit}>
               <Form.Group className="admin-form-group">
-                <Form.Label className="admin-form-label">Tên sản phẩm (*)</Form.Label>
+                <Form.Label className="admin-form-label">
+                  Tên sản phẩm (*)
+                </Form.Label>
                 <Form.Control
                   type="text"
                   className="admin-form-control"
                   value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, name: e.target.value })
+                  }
                   required
                   placeholder="Nhập tên sản phẩm"
                 />
@@ -281,30 +318,40 @@ function ProductAdmin({ isLogin, setIsLogin }) {
                   type="number"
                   className="admin-form-control"
                   value={formData.price}
-                  onChange={(e) => setFormData({ ...formData, price: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, price: e.target.value })
+                  }
                   required
                   placeholder="Nhập giá sản phẩm"
                   min="0"
                 />
               </Form.Group>
               <Form.Group className="admin-form-group">
-                <Form.Label className="admin-form-label">Số lượng (*)</Form.Label>
+                <Form.Label className="admin-form-label">
+                  Số lượng (*)
+                </Form.Label>
                 <Form.Control
                   type="number"
                   className="admin-form-control"
                   value={formData.quantity}
-                  onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, quantity: e.target.value })
+                  }
                   required
                   placeholder="Nhập số lượng"
                   min="0"
                 />
               </Form.Group>
               <Form.Group className="admin-form-group">
-                <Form.Label className="admin-form-label">Danh mục (*)</Form.Label>
+                <Form.Label className="admin-form-label">
+                  Danh mục (*)
+                </Form.Label>
                 <Form.Select
                   className="admin-form-select"
                   value={formData.catID}
-                  onChange={(e) => setFormData({ ...formData, catID: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, catID: e.target.value })
+                  }
                   required
                 >
                   <option value="">Chọn danh mục</option>
@@ -322,7 +369,9 @@ function ProductAdmin({ isLogin, setIsLogin }) {
                   className="admin-form-textarea"
                   rows={3}
                   value={formData.descreption}
-                  onChange={(e) => setFormData({ ...formData, descreption: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, descreption: e.target.value })
+                  }
                   placeholder="Nhập mô tả sản phẩm"
                 />
               </Form.Group>
@@ -331,27 +380,36 @@ function ProductAdmin({ isLogin, setIsLogin }) {
                 <Form.Select
                   className="admin-form-select"
                   value={formData.status}
-                  onChange={(e) => setFormData({ ...formData, status: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, status: e.target.value })
+                  }
                 >
                   <option value="Còn hàng">Còn hàng</option>
                   <option value="Hết hàng">Hết hàng</option>
                 </Form.Select>
               </Form.Group>
               <Form.Group className="admin-form-group">
-                <Form.Label className="admin-form-label">Đường dẫn ảnh</Form.Label>
+                <Form.Label className="admin-form-label">
+                  Đường dẫn ảnh
+                </Form.Label>
                 <Form.Control
                   type="text"
                   className="admin-form-control"
                   value={formData.image}
-                  onChange={(e) => setFormData({ ...formData, image: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, image: e.target.value })
+                  }
                   placeholder="/assets/images/product1.png"
                 />
               </Form.Group>
-              <div style={{ display: "flex", justifyContent: "flex-end", marginTop: "1.5rem" }}>
-                <Button 
-                  className="admin-modal-btn-submit" 
-                  type="submit"
-                >
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "flex-end",
+                  marginTop: "1.5rem",
+                }}
+              >
+                <Button className="admin-modal-btn-submit" type="submit">
                   {editingProduct ? "Cập nhật" : "Thêm mới"}
                 </Button>
                 <Button
@@ -371,4 +429,3 @@ function ProductAdmin({ isLogin, setIsLogin }) {
 }
 
 export default ProductAdmin;
-

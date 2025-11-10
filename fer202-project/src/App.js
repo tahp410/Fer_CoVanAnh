@@ -23,6 +23,8 @@ import Cart from "./components/Cart";
 import ProductDetail from "./components/ProductDetail";
 import ProductAdmin from "./components/ProductAdmin";
 import ChangePassword from "./components/ChangePassword";
+import OrderManagement from "./components/OrderManagement";
+import UserManagement from "./components/UserManagement";
 
 export default function App() {
   const [isLogin, setIsLogin] = useState(false);
@@ -50,6 +52,15 @@ export default function App() {
                 </>
               }
             />
+            <Route
+              path="/view-profile"
+              element={
+                <>
+                  <Header isLogin={isLogin} setIsLogin={setIsLogin} />
+                  <ViewProfile isLogin={isLogin} />
+                </>
+              }
+            />
 
             {/* <Route
               path="/"
@@ -64,6 +75,24 @@ export default function App() {
               }
             /> */}
             <Route
+              path="/product/ordermanagement"
+              element={
+                <>
+                  <Header isLogin={isLogin} setIsLogin={setIsLogin} />
+                  <OrderManagement />
+                </>
+              }
+            />
+            <Route
+              path="/verifyorder"
+              element={
+                <>
+                  <Header isLogin={isLogin} setIsLogin={setIsLogin} />
+                  <VerifyOrder />{" "}
+                </>
+              }
+            />
+            <Route
               path="/"
               element={
                 <>
@@ -75,16 +104,16 @@ export default function App() {
                 </>
               }
             />
-            <Route path="/productuser" element={
-              <>
-                <Header isLogin={isLogin} setIsLogin={setIsLogin} />
-                <ProductUser
-                  isLogin={isLogin}
-                  setIsLogin={setIsLogin}
-                />
-                <Footer />
-              </>
-            } />
+            <Route
+              path="/productuser"
+              element={
+                <>
+                  <Header isLogin={isLogin} setIsLogin={setIsLogin} />
+                  <ProductUser isLogin={isLogin} setIsLogin={setIsLogin} />
+                  <Footer />
+                </>
+              }
+            />
             <Route path="/accessdenied" element={<AccessDenied />} />
             <Route
               path="/view-profile"
@@ -175,6 +204,15 @@ export default function App() {
                 <>
                   <Header isLogin={isLogin} setIsLogin={setIsLogin} />
                   <ChangePassword />
+                </>
+              }
+            />
+            <Route
+              path="/User/productUser"
+              element={
+                <>
+                  <Header isLogin={isLogin} setIsLogin={setIsLogin} />
+                  <UserManagement />
                 </>
               }
             />

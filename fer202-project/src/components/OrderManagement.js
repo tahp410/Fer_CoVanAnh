@@ -154,117 +154,139 @@ const OrderManagement = () => {
   const renderTable = (orders, isNoLogin = false) => (
     <div className="admin-table-container">
       <Table striped bordered hover responsive className="admin-table">
-      <thead>
-        <tr style={{ textAlign: "center" }}>
-          <th>Mã đơn</th>
-          <th>Họ tên</th>
-          <th>Địa chỉ nhận</th>
-          <th>Điện thoại</th>
-          <th>Email</th>
-          <th>Sản phẩm đã đặt</th>
-          <th>Tổng tiền</th>
-          <th>Ngày Nhận</th>
-          <th>Trạng thái</th>
-          <th>Hành động</th>
-        </tr>
-      </thead>
-      <tbody>
-        {orders
-          .filter((order) => order.status !== "Archived") // Lọc bỏ các đơn hàng đã lưu trữ
-          .map((order) => (
-            <tr key={order.id}>
-              <td style={{ fontWeight: 600 }}>{order.id}</td>
-              <td>
-                {isNoLogin
-                  ? `${order.customer.firstName} ${order.customer.lastName}`
-                  : order.fullName}
-              </td>
-              <td>{isNoLogin ? order.customer.address : order.address}</td>
-              <td>{isNoLogin ? order.customer.phone : order.phone}</td>
-              <td>{isNoLogin ? order.customer.email : order.email}</td>
-              <td>
-                {order.product
-                  .map((item) => (
-                    <>
-                      {item.pName} (
-                      <span style={{ color: "#ef4444", fontWeight: 600 }}>{item.pid}</span>)
-                    </>
-                  ))
-                  .reduce((prev, curr) => [prev, ", ", curr])}
-              </td>
-              <td style={{ fontWeight: 700, color: "#ef4444" }}>
-                {typeof order.total === 'string' 
-                  ? order.total 
-                  : order.total.toLocaleString("vi-VN", {
-                      style: "currency",
-                      currency: "VND",
-                    })}
-              </td>
-              <td>
-                {new Date(
-                  order.reqDate || order.requestDate
-                ).toLocaleDateString("vi-VN")}
-              </td>
-              <td>
-                <span className={`admin-status-badge ${
-                  order.status === "Approved" 
-                    ? "admin-status-available"
-                    : order.status === "Ordered"
-                    ? "admin-status-ordered"
-                    : order.status === "Archived"
-                    ? "admin-status-archived"
-                    : "admin-status-out-of-stock"
-                }`}>
-                  {order.status === "Ordered" ? "Đang chờ" : 
-                   order.status === "Approved" ? "Đã duyệt" :
-                   order.status === "Rejected" ? "Đã từ chối" :
-                   order.status === "Archived" ? "Đã lưu trữ" : order.status}
-                </span>
-              </td>
-              <td>
-                {order.status === "Ordered" && (
-                  <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
+        <thead>
+          <tr style={{ textAlign: "center" }}>
+            <th>Mã đơn</th>
+            <th>Họ tên</th>
+            <th>Địa chỉ nhận</th>
+            <th>Điện thoại</th>
+            <th>Email</th>
+            <th>Sản phẩm đã đặt</th>
+            <th>Tổng tiền</th>
+            <th>Ngày Nhận</th>
+            <th>Trạng thái</th>
+            <th>Hành động</th>
+          </tr>
+        </thead>
+        <tbody>
+          {orders
+            .filter((order) => order.status !== "Archived") // Lọc bỏ các đơn hàng đã lưu trữ
+            .map((order) => (
+              <tr key={order.id}>
+                <td style={{ fontWeight: 600 }}>{order.id}</td>
+                <td>
+                  {isNoLogin
+                    ? `${order.customer.firstName} ${order.customer.lastName}`
+                    : order.fullName}
+                </td>
+                <td>{isNoLogin ? order.customer.address : order.address}</td>
+                <td>{isNoLogin ? order.customer.phone : order.phone}</td>
+                <td>{isNoLogin ? order.customer.email : order.email}</td>
+                <td>
+                  {order.product
+                    .map((item) => (
+                      <>
+                        {item.pName} (
+                        <span style={{ color: "#ef4444", fontWeight: 600 }}>
+                          {item.pid}
+                        </span>
+                        )
+                      </>
+                    ))
+                    .reduce((prev, curr) => [prev, ", ", curr])}
+                </td>
+                <td style={{ fontWeight: 700, color: "#ef4444" }}>
+                  {typeof order.total === "string"
+                    ? order.total
+                    : order.total.toLocaleString("vi-VN", {
+                        style: "currency",
+                        currency: "VND",
+                      })}
+                </td>
+                <td>
+                  {new Date(
+                    order.reqDate || order.requestDate
+                  ).toLocaleDateString("vi-VN")}
+                </td>
+                <td>
+                  <span
+                    className={`admin-status-badge ${
+                      order.status === "Approved"
+                        ? "admin-status-available"
+                        : order.status === "Ordered"
+                        ? "admin-status-ordered"
+                        : order.status === "Archived"
+                        ? "admin-status-archived"
+                        : "admin-status-out-of-stock"
+                    }`}
+                  >
+                    {order.status === "Ordered"
+                      ? "Đang chờ"
+                      : order.status === "Approved"
+                      ? "Đã duyệt"
+                      : order.status === "Rejected"
+                      ? "Đã từ chối"
+                      : order.status === "Archived"
+                      ? "Đã lưu trữ"
+                      : order.status}
+                  </span>
+                </td>
+                <td>
+                  {order.status === "Ordered" && (
+                    <div
+                      style={{
+                        display: "flex",
+                        gap: "0.5rem",
+                        flexWrap: "wrap",
+                      }}
+                    >
+                      <Button
+                        className="admin-btn-edit"
+                        onClick={() => handleApproveOrder(order.id, isNoLogin)}
+                        style={{
+                          background:
+                            "linear-gradient(135deg, #10b981 0%, #059669 100%)",
+                        }}
+                      >
+                        Đồng ý
+                      </Button>
+                      <Button
+                        className="admin-btn-delete"
+                        onClick={() => handleRejectOrder(order.id, isNoLogin)}
+                      >
+                        Từ chối
+                      </Button>
+                    </div>
+                  )}
+                  {order.status === "Approved" && (
                     <Button
                       className="admin-btn-edit"
-                      onClick={() => handleApproveOrder(order.id, isNoLogin)}
-                      style={{ background: "linear-gradient(135deg, #10b981 0%, #059669 100%)" }}
+                      onClick={() => handleArchiveOrder(order.id, isNoLogin)}
+                      style={{
+                        background:
+                          "linear-gradient(135deg, #06b6d4 0%, #0891b2 100%)",
+                      }}
                     >
-                      Đồng ý
+                      Lưu trữ
                     </Button>
-                    <Button
-                      className="admin-btn-delete"
-                      onClick={() => handleRejectOrder(order.id, isNoLogin)}
-                    >
-                      Từ chối
-                    </Button>
-                  </div>
-                )}
-                {order.status === "Approved" && (
-                  <Button
-                    className="admin-btn-edit"
-                    onClick={() => handleArchiveOrder(order.id, isNoLogin)}
-                    style={{ background: "linear-gradient(135deg, #06b6d4 0%, #0891b2 100%)" }}
-                  >
-                    Lưu trữ
-                  </Button>
-                )}
-              </td>
-            </tr>
-          ))}
-      </tbody>
-    </Table>
+                  )}
+                </td>
+              </tr>
+            ))}
+        </tbody>
+      </Table>
     </div>
   );
 
   return (
     <div style={{ marginBottom: "2rem" }}>
       <div
-        style={{ 
-          marginBottom: "1.5rem", 
+        style={{
+          marginBottom: "1.5rem",
           marginTop: "0.5rem",
           padding: "0.75rem 1rem",
           background: "rgba(37, 99, 235, 0.1)",
-          borderRadius: "0.5rem"
+          borderRadius: "0.5rem",
         }}
       >
         <a
@@ -277,53 +299,65 @@ const OrderManagement = () => {
         <span style={{ color: "#64748b" }}>&gt;</span>{" "}
         <strong style={{ color: "#1e293b" }}>Quản lý đơn hàng</strong>
       </div>
-      <h1 style={{ 
-        textAlign: "center", 
-        fontWeight: 700, 
-        margin: "1.5rem 0",
-        background: "linear-gradient(135deg, #2563eb 0%, #f59e0b 100%)",
-        WebkitBackgroundClip: "text",
-        WebkitTextFillColor: "transparent",
-        backgroundClip: "text",
-        fontSize: "2.5rem"
-      }}>
+      <h1
+        style={{
+          textAlign: "center",
+          fontWeight: 700,
+          margin: "1.5rem 0",
+          background: "linear-gradient(135deg, #2563eb 0%, #f59e0b 100%)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+          backgroundClip: "text",
+          fontSize: "2.5rem",
+        }}
+      >
         Danh sách các đơn hàng
       </h1>
       <div style={{ textAlign: "center", marginBottom: "2rem" }}>
-        <Button 
+        <Button
           className="admin-btn-add"
           onClick={handleShowCompletedOrders}
-          style={{ background: "linear-gradient(135deg, #06b6d4 0%, #0891b2 100%)" }}
+          style={{
+            background: "linear-gradient(135deg, #06b6d4 0%, #0891b2 100%)",
+          }}
         >
           Các đơn hàng đã hoàn thành
         </Button>
       </div>
       {loading ? (
         <div style={{ textAlign: "center", padding: "3rem" }}>
-          <Spinner animation="border" variant="primary" style={{ width: "3rem", height: "3rem" }} />
+          <Spinner
+            animation="border"
+            variant="primary"
+            style={{ width: "3rem", height: "3rem" }}
+          />
         </div>
       ) : (
         <>
-          <h3 style={{ 
-            color: "#2563eb", 
-            textAlign: "center", 
-            marginTop: "2rem",
-            marginBottom: "1rem",
-            fontWeight: 700,
-            fontSize: "1.5rem"
-          }}>
+          <h3
+            style={{
+              color: "#2563eb",
+              textAlign: "center",
+              marginTop: "2rem",
+              marginBottom: "1rem",
+              fontWeight: 700,
+              fontSize: "1.5rem",
+            }}
+          >
             Người dùng đã đăng nhập
           </h3>
           {renderTable(loggedOrders)}
 
-          <h3 style={{ 
-            color: "#ef4444", 
-            marginTop: "2rem", 
-            textAlign: "center",
-            marginBottom: "1rem",
-            fontWeight: 700,
-            fontSize: "1.5rem"
-          }}>
+          <h3
+            style={{
+              color: "#ef4444",
+              marginTop: "2rem",
+              textAlign: "center",
+              marginBottom: "1rem",
+              fontWeight: 700,
+              fontSize: "1.5rem",
+            }}
+          >
             Người dùng không đăng nhập
           </h3>
           {renderTable(noLoginOrders, true)}
@@ -339,9 +373,7 @@ const OrderManagement = () => {
         className="admin-modal"
       >
         <Modal.Header closeButton>
-          <Modal.Title>
-            Các đơn hàng đã hoàn thành và được lưu trữ
-          </Modal.Title>
+          <Modal.Title>Các đơn hàng đã hoàn thành và được lưu trữ</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {archivedOrders.length === 0 ? (
@@ -353,68 +385,75 @@ const OrderManagement = () => {
           ) : (
             <div className="admin-table-container">
               <Table striped bordered hover responsive className="admin-table">
-              <thead>
-                <tr>
-                  <th>Mã đơn</th>
-                  <th>Họ tên</th>
-                  <th>Địa chỉ nhận</th>
-                  <th>Điện thoại</th>
-                  <th>Email</th>
-                  <th>Sản phẩm đã đặt</th>
-                  <th>Tổng tiền</th>
-                  <th>Ngày nhận</th>
-                </tr>
-              </thead>
-              <tbody>
-                {archivedOrders.map((order) => (
-                  <tr key={order.id}>
-                    <td style={{ fontWeight: 600 }}>{order.id}</td>
-                    <td>
-                      {order.customer
-                        ? `${order.customer.firstName} ${order.customer.lastName}`
-                        : order.fullName}
-                    </td>
-                    <td>
-                      {order.customer ? order.customer.address : order.address}
-                    </td>
-                    <td>
-                      {order.customer ? order.customer.phone : order.phone}
-                    </td>
-                    <td>
-                      {order.customer ? order.customer.email : order.email}
-                    </td>
-                    <td>
-                      {order.product
-                        .map((item) => (
-                          <>
-                            {item.pName} (
-                            <span style={{ color: "#ef4444", fontWeight: 600 }}>{item.pid}</span>)
-                          </>
-                        ))
-                        .reduce((prev, curr) => [prev, ", ", curr])}
-                    </td>
-                    <td style={{ fontWeight: 700, color: "#ef4444" }}>
-                      {typeof order.total === 'string' 
-                        ? order.total 
-                        : order.total.toLocaleString("vi-VN", {
-                            style: "currency",
-                            currency: "VND",
-                          })}
-                    </td>
-                    <td>
-                      {new Date(
-                        order.reqDate || order.requestDate
-                      ).toLocaleDateString("vi-VN")}
-                    </td>
+                <thead>
+                  <tr>
+                    <th>Mã đơn</th>
+                    <th>Họ tên</th>
+                    <th>Địa chỉ nhận</th>
+                    <th>Điện thoại</th>
+                    <th>Email</th>
+                    <th>Sản phẩm đã đặt</th>
+                    <th>Tổng tiền</th>
+                    <th>Ngày nhận</th>
                   </tr>
-                ))}
-              </tbody>
-            </Table>
+                </thead>
+                <tbody>
+                  {archivedOrders.map((order) => (
+                    <tr key={order.id}>
+                      <td style={{ fontWeight: 600 }}>{order.id}</td>
+                      <td>
+                        {order.customer
+                          ? `${order.customer.firstName} ${order.customer.lastName}`
+                          : order.fullName}
+                      </td>
+                      <td>
+                        {order.customer
+                          ? order.customer.address
+                          : order.address}
+                      </td>
+                      <td>
+                        {order.customer ? order.customer.phone : order.phone}
+                      </td>
+                      <td>
+                        {order.customer ? order.customer.email : order.email}
+                      </td>
+                      <td>
+                        {order.product
+                          .map((item) => (
+                            <>
+                              {item.pName} (
+                              <span
+                                style={{ color: "#ef4444", fontWeight: 600 }}
+                              >
+                                {item.pid}
+                              </span>
+                              )
+                            </>
+                          ))
+                          .reduce((prev, curr) => [prev, ", ", curr])}
+                      </td>
+                      <td style={{ fontWeight: 700, color: "#ef4444" }}>
+                        {typeof order.total === "string"
+                          ? order.total
+                          : order.total.toLocaleString("vi-VN", {
+                              style: "currency",
+                              currency: "VND",
+                            })}
+                      </td>
+                      <td>
+                        {new Date(
+                          order.reqDate || order.requestDate
+                        ).toLocaleDateString("vi-VN")}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
             </div>
           )}
         </Modal.Body>
         <Modal.Footer>
-          <Button 
+          <Button
             className="admin-modal-btn-cancel"
             onClick={handleCloseCompletedOrders}
           >
