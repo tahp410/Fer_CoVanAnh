@@ -4,10 +4,10 @@
       "id": "P0001",
       "name": "Tivi LG UHD - AI Voice",
       "price": 20000000,
-      "quantity": 20,
+      "quantity": 19,
       "catID": "1",
       "descreption": "Ti vi này rất là xịn, màn hình rộng, phù hợp với giá tiền cho mọi gia đình, hiệu ứng âm thanh đỉnh cao",
-      "date": "2024-04-28",
+      "date": "2025-11-10",
       "status": "Còn hàng",
       "image": "/assets/images/product1.png"
     },
@@ -679,7 +679,7 @@
       "id": "2",
       "name": "User4",
       "email": "user4@gmail.com",
-      "password": "1",
+      "password": "123456",
       "dob": "2024-04-26",
       "gender": "nữ",
       "role": "user",
@@ -749,7 +749,7 @@
       "id": "9",
       "name": "Phát Đăng Đỗ",
       "email": "ddphat410@gmail.com",
-      "password": "123456",
+      "password": "1234567",
       "dob": "2003-10-04",
       "gender": "Nam",
       "role": "user",
@@ -1147,6 +1147,98 @@
       "status": "Ordered",
       "orderAt": "2024-12-13",
       "reqDate": "2024-12-15"
+    },
+    {
+      "id": "ib4h",
+      "accountId": "2",
+      "fullName": "User4",
+      "address": "1",
+      "phone": "0967048203",
+      "email": "user4@gmail.com",
+      "product": [
+        {
+          "pid": "P0001",
+          "pName": "Tivi LG UHD - AI Voice",
+          "price": 20000000,
+          "quantity": 1,
+          "image": "/assets/images/product1.png"
+        }
+      ],
+      "vat": "8%",
+      "total": "21.600.000 ₫",
+      "shipping": 0,
+      "status": "Approved",
+      "orderAt": "2025-11-10",
+      "reqDate": "2025-11-14"
+    },
+    {
+      "id": "xbsh",
+      "accountId": "2",
+      "fullName": "User4",
+      "address": "1",
+      "phone": "0967048203",
+      "email": "user4@gmail.com",
+      "product": [
+        {
+          "pid": "P0001",
+          "pName": "Tivi LG UHD - AI Voice",
+          "price": 20000000,
+          "quantity": 1,
+          "image": "/assets/images/product1.png"
+        }
+      ],
+      "vat": "8%",
+      "total": "21.600.000 ₫",
+      "shipping": 0,
+      "status": "Approved",
+      "orderAt": "2025-11-10",
+      "reqDate": "2025-11-21"
+    },
+    {
+      "id": "j23l",
+      "accountId": "2",
+      "fullName": "User4",
+      "address": "2",
+      "phone": "0967048203",
+      "email": "user4@gmail.com",
+      "product": [
+        {
+          "pid": "P0001",
+          "pName": "Tivi LG UHD - AI Voice",
+          "price": 20000000,
+          "quantity": 1,
+          "image": "/assets/images/product1.png"
+        }
+      ],
+      "vat": "8%",
+      "total": "21.600.000 ₫",
+      "shipping": 0,
+      "status": "Approved",
+      "orderAt": "2025-11-10",
+      "reqDate": "2025-11-12"
+    },
+    {
+      "id": "znr5",
+      "accountId": "2",
+      "fullName": "User4",
+      "address": "122312",
+      "phone": "0967048203",
+      "email": "user4@gmail.com",
+      "product": [
+        {
+          "pid": "P0001",
+          "pName": "Tivi LG UHD - AI Voice",
+          "price": 20000000,
+          "quantity": 1,
+          "image": "/assets/images/product1.png"
+        }
+      ],
+      "vat": "8%",
+      "total": "21.600.000 ₫",
+      "shipping": 0,
+      "status": "Approved",
+      "orderAt": "2025-11-10",
+      "reqDate": "2025-11-13"
     }
   ],
   "reviews": [
