@@ -118,7 +118,7 @@ const AnswerQuestion = () => {
           </p>
           <hr className="hr"></hr>
           <p>
-            Báo chí, hợp tác: liên hệ <span style={{ color: "blue", fontWeight: "bold" }}>ccoolls147@gmail.com || (Nguyễn Đức Huy)</span>
+            Báo chí, hợp tác: liên hệ <span style={{ color: "blue", fontWeight: "bold" }}>group9@gmail.com || (Do Gia Binh)</span>
           </p>
           <p>
             Tổng đài tư vấn, hỗ trợ khách hàng (7:30 - 23:00): <span style={{ color: "#f60", fontWeight: "bold" }}>0902 345 678</span>
