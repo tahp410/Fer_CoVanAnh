@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import AccessDenied from "./components/AccessDenied";
 import "./components/style.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
