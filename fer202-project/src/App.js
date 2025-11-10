@@ -67,7 +67,7 @@ export default function App() {
                 </>
               }
             />
-            <Route path="/accessdenied" element={<AccessDenied />} />
+            {/* <Route path="/accessdenied" element={<AccessDenied />} /> */}
 
             <Route
               path="/terms"
