@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import AccessDenied from "./components/AccessDenied";
+import AnswerQuestion from "./hooks/AnswerQuestion";
 import "./components/style.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -68,7 +69,7 @@ export default function App() {
                 </>
               }
             />
-            {/* <Route path="/accessdenied" element={<AccessDenied />} /> */}
+            <Route path="/accessdenied" element={<AccessDenied />} />
 
             <Route
               path="/terms"
@@ -85,6 +86,16 @@ export default function App() {
                 <>
                   <Header isLogin={isLogin} setIsLogin={setIsLogin} />
                   <StoreRules />
+                </>
+              }
+            />
+            <Route
+              path="/answerquestion"
+              element={
+                <>
+                  <Header isLogin={isLogin} setIsLogin={setIsLogin} />
+                  <AnswerQuestion />
+                  <Footer />
                 </>
               }
             />
