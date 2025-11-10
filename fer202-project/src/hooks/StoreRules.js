@@ -131,7 +131,7 @@ const StoreRules = () => {
             <Row className="text-end" style={{ marginRight: "50px" }}>
               <p className="fw-bold fs-4">Đại diện theo pháp luật của thương nhân</p>
               <p style={{ color: "purple" }}>ĐÃ KÝ TÊN</p>
-              <p style={{ color: "red" }}>Nguyễn Đức Huy</p>
+              <p style={{ color: "red" }}>Group ...</p>
             </Row>
           </Col>
         </Row>
