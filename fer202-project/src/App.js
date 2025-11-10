@@ -5,6 +5,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import AccessDenied from "./components/AccessDenied";
+import AnswerQuestion from "./hooks/AnswerQuestion";
 import "./components/style.css";
 import "./components/css/GlobalStyles.css";
 import "./components/css/Style.css";
@@ -13,6 +15,7 @@ import Footer from "./components/Footer";
 import { ThemeProvider } from "./components/ThemeProvider";
 import ProductUser from "./components/ProductUser";
 import StoreRules from "./hooks/StoreRules";
+import { Term } from '../src/hooks/Term';
 import { Term } from './hooks/Term';
 import AccessDenied from "./components/AccessDenied";
 import ViewProfile from "./components/ViewProfile";
@@ -26,6 +29,7 @@ import ChangePassword from "./components/ChangePassword";
 
 export default function App() {
   const [isLogin, setIsLogin] = useState(false);
+  const [products, setProducts] = useState([]);
   useEffect(() => {
     const accounts = JSON.parse(localStorage.getItem("accounts"));
     if (accounts) setIsLogin(true);
@@ -68,14 +72,18 @@ export default function App() {
               element={
                 <>
                   <Header isLogin={isLogin} setIsLogin={setIsLogin} />
+
                   <ProductUser
+                    products={products}
                     isLogin={isLogin}
                     setIsLogin={setIsLogin}
                   />
+
                   <Footer />
                 </>
               }
             />
+<<<<<<< .mine
             <Route path="/productuser" element={
               <>
                 <Header isLogin={isLogin} setIsLogin={setIsLogin} />
@@ -87,6 +95,19 @@ export default function App() {
               </>
             } />
             <Route path="/accessdenied" element={<AccessDenied />} />
+=======
+            <Route path="/accessdenied" element={<AccessDenied />} />
+
+
+
+
+
+
+
+
+
+
+>>>>>>> .theirs
             <Route
               path="/view-profile"
               element={
@@ -145,6 +166,7 @@ export default function App() {
                 </>
               }
             />
+<<<<<<< .mine
             <Route
               path="/cart"
               element={
@@ -179,6 +201,42 @@ export default function App() {
                 </>
               }
             />
+=======
+            <Route
+              path="/answerquestion"
+              element={
+                <>
+                  <Header isLogin={isLogin} setIsLogin={setIsLogin} />
+                  <AnswerQuestion />
+                  <Footer />
+                </>
+              }
+            />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> .theirs
           </Routes>
           <ToastContainer
             position="top-right"

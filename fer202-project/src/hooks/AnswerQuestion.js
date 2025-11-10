@@ -118,7 +118,7 @@ const AnswerQuestion = () => {
           </p>
           <hr className="hr"></hr>
           <p>
-            Báo chí, hợp tác: liên hệ <span style={{ color: "blue", fontWeight: "bold" }}>ccoolls147@gmail.com || (Nguyễn Đức Huy)</span>
+            Báo chí, hợp tác: liên hệ <span style={{ color: "blue", fontWeight: "bold" }}>group9@gmail.com || (Do Gia Binh)</span>
           </p>
           <p>
             Tổng đài tư vấn, hỗ trợ khách hàng (7:30 - 23:00): <span style={{ color: "#f60", fontWeight: "bold" }}>0902 345 678</span>
@@ -127,7 +127,7 @@ const AnswerQuestion = () => {
             Tổng đài khiếu nại (8:00 - 22:30): <span style={{ color: "#f60", fontWeight: "bold" }}>1900.3103</span>
           </p>
           <p>
-            Email: <span style={{ color: "blue", fontWeight: "bold" }}>huyndhe176876@fpt.edu.vn</span>
+            Email: <span style={{ color: "blue", fontWeight: "bold" }}>binh@fpt.edu.vn</span>
           </p>
           <Row className="end-answerquestion">
             <Col md={4}>
