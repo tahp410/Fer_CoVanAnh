@@ -127,7 +127,7 @@ const AnswerQuestion = () => {
             Tổng đài khiếu nại (8:00 - 22:30): <span style={{ color: "#f60", fontWeight: "bold" }}>1900.3103</span>
           </p>
           <p>
-            Email: <span style={{ color: "blue", fontWeight: "bold" }}>huyndhe176876@fpt.edu.vn</span>
+            Email: <span style={{ color: "blue", fontWeight: "bold" }}>@fpt.edu.vn</span>
           </p>
           <Row className="end-answerquestion">
             <Col md={4}>

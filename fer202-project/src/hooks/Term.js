@@ -87,7 +87,7 @@ export const Term = () => {
           Nếu quý khách có bất kỳ câu hỏi nào về các điều khoản và điều kiện này, vui lòng liên hệ với chúng tôi qua Email hoặc số điện thoại hỗ trợ
           khách hàng.
         </p>
-        <p style={{ color: "purple", fontWeight: "bold" }}>* Email: huyndhe176876@fpt.edu.vn </p>
+        <p style={{ color: "purple", fontWeight: "bold" }}>* Email: @fpt.edu.vn </p>
         <p style={{ color: "purple", fontWeight: "bold" }}>* Điện thoại: 0123 456 789</p>
       </div>
     </Container>
