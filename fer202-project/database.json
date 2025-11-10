@@ -744,16 +744,6 @@
       "gender": "Nam",
       "role": "admin",
       "isActive": true
-    },
-    {
-      "id": "9",
-      "name": "Phát Đăng Đỗ",
-      "email": "ddphat410@gmail.com",
-      "password": "1234567",
-      "dob": "2003-10-04",
-      "gender": "Nam",
-      "role": "user",
-      "isActive": true
     }
   ],
   "orderDetailsNoLogin": [

@@ -23,6 +23,8 @@ import Cart from "./components/Cart";
 import ProductDetail from "./components/ProductDetail";
 import ProductAdmin from "./components/ProductAdmin";
 import ChangePassword from "./components/ChangePassword";
+import OrderManagement from "./components/OrderManagement";
+import UserManagement from "./components/UserManagement";
 
 export default function App() {
   const [isLogin, setIsLogin] = useState(false);
@@ -202,6 +204,15 @@ export default function App() {
                 <>
                   <Header isLogin={isLogin} setIsLogin={setIsLogin} />
                   <ChangePassword />
+                </>
+              }
+            />
+            <Route
+              path="/User/productUser"
+              element={
+                <>
+                  <Header isLogin={isLogin} setIsLogin={setIsLogin} />
+                  <UserManagement />
                 </>
               }
             />
