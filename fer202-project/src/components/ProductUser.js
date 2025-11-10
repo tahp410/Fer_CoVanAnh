@@ -1,4 +1,14 @@
-import { Row, Col, Card, Pagination, Button, Nav, Navbar, Carousel, Form } from "react-bootstrap";
+import {
+  Row,
+  Col,
+  Card,
+  Pagination,
+  Button,
+  Nav,
+  Navbar,
+  Carousel,
+  Form,
+} from "react-bootstrap";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import SearchIcon from "@mui/icons-material/Search";
@@ -32,15 +42,27 @@ export default function ProductUser({ isLogin }) {
       .then((res) => res.json())
       .then((result) => setCategories(result));
 
-    fetch(categoryID ? `http://localhost:9999/products?catID=${categoryID}` : "http://localhost:9999/products")
+    fetch(
+      categoryID
+        ? `http://localhost:9999/products?catID=${categoryID}`
+        : "http://localhost:9999/products"
+    )
       .then((res) => res.json())
       .then((result) => {
         let searchResult = [];
         if (catID === 0) {
-          searchResult = result.filter((p) => p.name.toLowerCase().includes(search.toLowerCase()) || p.descreption.toLowerCase().includes(search.toLowerCase()));
+          searchResult = result.filter(
+            (p) =>
+              p.name.toLowerCase().includes(search.toLowerCase()) ||
+              p.descreption.toLowerCase().includes(search.toLowerCase())
+          );
         } else {
           // eslint-disable-next-line eqeqeq
-          searchResult = result.filter((p) => p.catID == catID && p.name.toLowerCase().includes(search.toLowerCase()));
+          searchResult = result.filter(
+            (p) =>
+              p.catID == catID &&
+              p.name.toLowerCase().includes(search.toLowerCase())
+          );
         }
         setProducts(searchResult);
       });
@@ -62,7 +84,8 @@ export default function ProductUser({ isLogin }) {
     const ProductExist = storedCart.findIndex((item) => item.id === product.id);
 
     if (ProductExist !== -1) {
-      storedCart[ProductExist].quantity = (storedCart[ProductExist].quantity || 1) + 1;
+      storedCart[ProductExist].quantity =
+        (storedCart[ProductExist].quantity || 1) + 1;
       updatedCart = [...storedCart];
     } else {
       product.quantity = 1;
@@ -115,7 +138,11 @@ export default function ProductUser({ isLogin }) {
     const pages = [];
     for (let i = 1; i <= totalPages; i++) {
       // Hiển thị trang đầu, cuối, hoặc các trang gần vs currentPage
-      if (i === 1 || i === totalPages || (i >= currentPage - 1 && i <= currentPage + 1)) {
+      if (
+        i === 1 ||
+        i === totalPages ||
+        (i >= currentPage - 1 && i <= currentPage + 1)
+      ) {
         pages.push(
           <Pagination.Item
             key={i}
@@ -141,10 +168,26 @@ export default function ProductUser({ isLogin }) {
 
   // Carousels
   const carousels = [
-    { id: 1, image: "assets/images/carousel1.png", alt: "Mô tả cho carousel 1" },
-    { id: 2, image: "assets/images/carousel2.png", alt: "Mô tả cho carousel 2" },
-    { id: 3, image: "assets/images/carousel3.png", alt: "Mô tả cho carousel 3" },
-    { id: 4, image: "assets/images/carousel4.png", alt: "Mô tả cho carousel 4" },
+    {
+      id: 1,
+      image: "assets/images/carousel1.png",
+      alt: "Mô tả cho carousel 1",
+    },
+    {
+      id: 2,
+      image: "assets/images/carousel2.png",
+      alt: "Mô tả cho carousel 2",
+    },
+    {
+      id: 3,
+      image: "assets/images/carousel3.png",
+      alt: "Mô tả cho carousel 3",
+    },
+    {
+      id: 4,
+      image: "assets/images/carousel4.png",
+      alt: "Mô tả cho carousel 4",
+    },
   ];
 
   // Sự kiện Sroll cho thanh điều hướng Navigation, khi lăn chuột nó sẽ đi theo header
@@ -193,13 +236,25 @@ export default function ProductUser({ isLogin }) {
           <Carousel interval={2200}>
             {carousels.map((c) => (
               <Carousel.Item key={c.id}>
-                <img src={c.image} alt={c.alt} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
+                <img
+                  src={c.image}
+                  alt={c.alt}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    objectPosition: "center",
+                  }}
+                />
               </Carousel.Item>
             ))}
           </Carousel>
         </Col>
         {/* Cột vị trí cửa hàng và số zalo đi kèm */}
-        <Col sm={2} style={{ overflow: "hidden", position: "relative", height: "350px" }}>
+        <Col
+          sm={2}
+          style={{ overflow: "hidden", position: "relative", height: "350px" }}
+        >
           <div
             style={{
               display: "flex",
@@ -229,10 +284,22 @@ export default function ProductUser({ isLogin }) {
                 list.scrollTop -= 50;
               }}
             >
-              <FontAwesomeIcon icon={faAngleUp} style={{ color: "white", fontSize: "24px" }} />
+              <FontAwesomeIcon
+                icon={faAngleUp}
+                style={{ color: "white", fontSize: "24px" }}
+              />
             </Button>
           </div>
-          <div id="store-list" style={{ overflowY: "hidden", height: "250px", paddingRight: "12px", justifyContent: "center", marginTop: "50px" }}>
+          <div
+            id="store-list"
+            style={{
+              overflowY: "hidden",
+              height: "250px",
+              paddingRight: "12px",
+              justifyContent: "center",
+              marginTop: "50px",
+            }}
+          >
             <ul style={{ listStyleType: "none", padding: 0 }}>
               <li style={{ marginBottom: "10px" }}>
                 <strong>123 Lý Thường Kiệt, TP.HCM</strong>
@@ -249,7 +316,12 @@ export default function ProductUser({ isLogin }) {
                     textAlign: "center",
                   }}
                 >
-                  <a href="https://chat.zalo.me/login" target="_blank" rel="noopener noreferrer" style={{ color: "white", textDecoration: "none" }}>
+                  <a
+                    href="https://chat.zalo.me/login"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ color: "white", textDecoration: "none" }}
+                  >
                     Zalo: 0111.111.111
                   </a>
                 </span>
@@ -269,7 +341,12 @@ export default function ProductUser({ isLogin }) {
                     textAlign: "center",
                   }}
                 >
-                  <a href="https://chat.zalo.me/login" target="_blank" rel="noopener noreferrer" style={{ color: "white", textDecoration: "none" }}>
+                  <a
+                    href="https://chat.zalo.me/login"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ color: "white", textDecoration: "none" }}
+                  >
                     Zalo: 0222.222.222
                   </a>
                 </span>
@@ -289,7 +366,12 @@ export default function ProductUser({ isLogin }) {
                     textAlign: "center",
                   }}
                 >
-                  <a href="https://chat.zalo.me/login" target="_blank" rel="noopener noreferrer" style={{ color: "white", textDecoration: "none" }}>
+                  <a
+                    href="https://chat.zalo.me/login"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ color: "white", textDecoration: "none" }}
+                  >
                     Zalo: 0333.333.333
                   </a>
                 </span>
@@ -309,7 +391,12 @@ export default function ProductUser({ isLogin }) {
                     textAlign: "center",
                   }}
                 >
-                  <a href="https://chat.zalo.me/login" target="_blank" rel="noopener noreferrer" style={{ color: "white", textDecoration: "none" }}>
+                  <a
+                    href="https://chat.zalo.me/login"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ color: "white", textDecoration: "none" }}
+                  >
                     Zalo: 0444.444.444
                   </a>
                 </span>
@@ -329,7 +416,12 @@ export default function ProductUser({ isLogin }) {
                     textAlign: "center",
                   }}
                 >
-                  <a href="https://chat.zalo.me/login" target="_blank" rel="noopener noreferrer" style={{ color: "white", textDecoration: "none" }}>
+                  <a
+                    href="https://chat.zalo.me/login"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ color: "white", textDecoration: "none" }}
+                  >
                     Zalo: 0555.555.555
                   </a>
                 </span>
@@ -349,7 +441,12 @@ export default function ProductUser({ isLogin }) {
                     textAlign: "center",
                   }}
                 >
-                  <a href="https://chat.zalo.me/login" target="_blank" rel="noopener noreferrer" style={{ color: "white", textDecoration: "none" }}>
+                  <a
+                    href="https://chat.zalo.me/login"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ color: "white", textDecoration: "none" }}
+                  >
                     Zalo: 0123.456.789
                   </a>
                 </span>
@@ -386,7 +483,10 @@ export default function ProductUser({ isLogin }) {
                 list.scrollTop += 50;
               }}
             >
-              <FontAwesomeIcon icon={faAngleDown} style={{ color: "white", fontSize: "24px" }} />
+              <FontAwesomeIcon
+                icon={faAngleDown}
+                style={{ color: "white", fontSize: "24px" }}
+              />
             </Button>
           </div>
         </Col>
@@ -394,11 +494,28 @@ export default function ProductUser({ isLogin }) {
 
       {/* Thanh điều hướng sản phẩm, giới thiệu, liên hệ*/}
       <Row>
-        <Navbar bg="secondary" expand="lg" className={`navbar ${isSticky ? "sticky" : ""}`} id="navbar">
-          <Navbar.Brand style={{ border: "1px solid yellow", marginLeft: "30px", padding: "5px 10px", borderRadius: "10px", backgroundColor: "yellow" }}>
+        <Navbar
+          bg="secondary"
+          expand="lg"
+          className={`navbar ${isSticky ? "sticky" : ""}`}
+          id="navbar"
+        >
+          <Navbar.Brand
+            style={{
+              border: "1px solid yellow",
+              marginLeft: "30px",
+              padding: "5px 10px",
+              borderRadius: "10px",
+              backgroundColor: "yellow",
+            }}
+          >
             Trang chủ
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" aria-label="Toggle navigation" style={{ backgroundColor: "white" }} />
+          <Navbar.Toggle
+            aria-controls="basic-navbar-nav"
+            aria-label="Toggle navigation"
+            style={{ backgroundColor: "white" }}
+          />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
               <Nav.Link
@@ -448,11 +565,21 @@ export default function ProductUser({ isLogin }) {
         {/* Thanh tìm kiếm */}
         <Col xs={12} md={8}>
           <Form>
-            <div style={{ display: "flex", alignItems: "center", marginLeft: "6px" }}>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                marginLeft: "6px",
+              }}
+            >
               <Form.Control
                 type="text"
                 placeholder="Nhập tên sản phẩm bạn muốn tìm kiếm..."
-                style={{ border: "2px solid rgb(0, 191, 255)", marginRight: "10px", borderRadius: "10px" }}
+                style={{
+                  border: "2px solid rgb(0, 191, 255)",
+                  marginRight: "10px",
+                  borderRadius: "10px",
+                }}
                 onChange={handleSearchChange}
               />
               <span className="Search-icon-user">
@@ -470,7 +597,8 @@ export default function ProductUser({ isLogin }) {
             onMouseEnter={(e) => (e.target.style.color = "lightgrey")}
             onMouseLeave={(e) => (e.target.style.color = "white")}
           >
-            🛒 Giỏ Hàng [ <span style={{ fontFamily: "fantasy" }}>{cartCount}</span> ]
+            🛒 Giỏ Hàng [{" "}
+            <span style={{ fontFamily: "fantasy" }}>{cartCount}</span> ]
           </div>
         </Col>
       </Row>
@@ -480,11 +608,23 @@ export default function ProductUser({ isLogin }) {
         {/* Cột Menu Trái */}
         <Col md={2}>
           {/* xếp theo giá tiền */}
-          <div style={{ backgroundColor: "lightgrey", padding: "20px", borderRadius: "10px" }}>
+          <div
+            style={{
+              backgroundColor: "lightgrey",
+              padding: "20px",
+              borderRadius: "10px",
+            }}
+          >
             <Form>
               <Form.Group controlId="sortOrder">
-                <Form.Label style={{ fontWeight: "bold" }}>Sắp xếp theo giá:</Form.Label>
-                <Form.Control as="select" value={sortOrder} onChange={handleSortChange}>
+                <Form.Label style={{ fontWeight: "bold" }}>
+                  Sắp xếp theo giá:
+                </Form.Label>
+                <Form.Control
+                  as="select"
+                  value={sortOrder}
+                  onChange={handleSortChange}
+                >
                   <option value="default">Không sắp xếp</option>
                   <option value="asc">Giá tăng dần</option>
                   <option value="desc">Giá giảm dần</option>
@@ -493,10 +633,22 @@ export default function ProductUser({ isLogin }) {
             </Form>
           </div>
           {/* xếp theo thể loại mặt hàng */}
-          <div style={{ backgroundColor: "lightgrey", padding: "20px", borderRadius: "10px", marginTop: "10px" }}>
+          <div
+            style={{
+              backgroundColor: "lightgrey",
+              padding: "20px",
+              borderRadius: "10px",
+              marginTop: "10px",
+            }}
+          >
             <Form>
-              <Form.Label style={{ fontWeight: "bold" }}>Lựa chọn theo loại:</Form.Label>
-              <Form.Select onChange={handleCategoryChange} value={selectedCategory || 0}>
+              <Form.Label style={{ fontWeight: "bold" }}>
+                Lựa chọn theo loại:
+              </Form.Label>
+              <Form.Select
+                onChange={handleCategoryChange}
+                value={selectedCategory || 0}
+              >
                 <option key={0} value={0}>
                   {" "}
                   Tất cả sản phẩm
@@ -510,27 +662,56 @@ export default function ProductUser({ isLogin }) {
             </Form>
           </div>
           {/* Mục các logo ngân hàng */}
-          <div style={{ backgroundColor: "lightgrey", padding: "20px", borderRadius: "10px", marginTop: "10px" }}>
+          <div
+            style={{
+              backgroundColor: "lightgrey",
+              padding: "20px",
+              borderRadius: "10px",
+              marginTop: "10px",
+            }}
+          >
             <Form>
               <Form.Group controlId="paymentMethods">
-                <Form.Label style={{ fontWeight: "bold", fontSize: "0.9rem" }}>Phương thức thanh toán:</Form.Label>
+                <Form.Label style={{ fontWeight: "bold", fontSize: "0.9rem" }}>
+                  Phương thức thanh toán:
+                </Form.Label>
                 <Row>
                   <Col xs={4}>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" alt="Visa" style={{ width: "100%" }} />
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png"
+                      alt="Visa"
+                      style={{ width: "100%" }}
+                    />
                   </Col>
                   <Col xs={4}>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Mastercard_2019_logo.svg" alt="Mastercard" style={{ width: "100%" }} />
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Mastercard_2019_logo.svg"
+                      alt="Mastercard"
+                      style={{ width: "100%" }}
+                    />
                   </Col>
                   <Col xs={4}>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="Paypal" style={{ width: "100%" }} />
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg"
+                      alt="Paypal"
+                      style={{ width: "100%" }}
+                    />
                   </Col>
                 </Row>
                 <Row>
                   <Col xs={4}>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/American_Express_logo.svg" alt="Amex" style={{ width: "100%" }} />
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/3/30/American_Express_logo.svg"
+                      alt="Amex"
+                      style={{ width: "100%" }}
+                    />
                   </Col>
                   <Col xs={4}>
-                    <img src="https://upload.wikimedia.org/wikipedia/vi/f/fe/MoMo_Logo.png" alt="Momo" style={{ width: "100%" }} />
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/vi/f/fe/MoMo_Logo.png"
+                      alt="Momo"
+                      style={{ width: "100%" }}
+                    />
                   </Col>
                   <Col xs={4}>
                     <img
@@ -542,7 +723,11 @@ export default function ProductUser({ isLogin }) {
                 </Row>
                 <Row className="mt-2">
                   <Col xs={4}>
-                    <img src="https://cdn.haitrieu.com/wp-content/uploads/2022/10/Logo-ZaloPay-350x350.png" alt="ZaloPay" style={{ width: "100%" }} />
+                    <img
+                      src="https://cdn.haitrieu.com/wp-content/uploads/2022/10/Logo-ZaloPay-350x350.png"
+                      alt="ZaloPay"
+                      style={{ width: "100%" }}
+                    />
                   </Col>
                   <Col xs={4}>
                     <img
@@ -552,35 +737,70 @@ export default function ProductUser({ isLogin }) {
                     />
                   </Col>
                   <Col xs={4}>
-                    <img src="https://fintechnews.sg/wp-content/uploads/2019/06/03-moca.png" alt="Moca" style={{ width: "100%" }} />
+                    <img
+                      src="https://fintechnews.sg/wp-content/uploads/2019/06/03-moca.png"
+                      alt="Moca"
+                      style={{ width: "100%" }}
+                    />
                   </Col>
                 </Row>
               </Form.Group>
             </Form>
           </div>
           {/* Liên hệ phục vụ cho các mục đích */}
-          <div style={{ backgroundColor: "lightgrey", padding: "20px", borderRadius: "10px", marginTop: "10px" }}>
-            <Form.Label style={{ fontWeight: "bold", fontSize: "0.9rem" }}>Tổng Đài Hỗ Trợ Miễn Phí:</Form.Label>
+          <div
+            style={{
+              backgroundColor: "lightgrey",
+              padding: "20px",
+              borderRadius: "10px",
+              marginTop: "10px",
+            }}
+          >
+            <Form.Label style={{ fontWeight: "bold", fontSize: "0.9rem" }}>
+              Tổng Đài Hỗ Trợ Miễn Phí:
+            </Form.Label>
             <ul style={{ listStyleType: "none", paddingLeft: 0 }}>
               <li>
-                Mua hàng: <span style={{ color: "blue", fontWeight: "bold" }}>0111.111.111</span>
+                Mua hàng:{" "}
+                <span style={{ color: "blue", fontWeight: "bold" }}>
+                  0111.111.111
+                </span>
               </li>
               <li>
-                Khiếu nại: <span style={{ color: "blue", fontWeight: "bold" }}>0222.222.222</span>
+                Khiếu nại:{" "}
+                <span style={{ color: "blue", fontWeight: "bold" }}>
+                  0222.222.222
+                </span>
               </li>
               <li>
-                Bảo hành: <span style={{ color: "blue", fontWeight: "bold" }}>0333.333.333</span>
+                Bảo hành:{" "}
+                <span style={{ color: "blue", fontWeight: "bold" }}>
+                  0333.333.333
+                </span>
               </li>
             </ul>
           </div>
           {/* Các chính sách, điều khoản, gửi góp ý, khiếu nại */}
-          <div style={{ backgroundColor: "lightgrey", padding: "20px", borderRadius: "10px", marginTop: "10px" }}>
-            <Form.Label style={{ fontWeight: "bold", fontSize: "1rem" }}>Chính Sách Sử dụng:</Form.Label>
+          <div
+            style={{
+              backgroundColor: "lightgrey",
+              padding: "20px",
+              borderRadius: "10px",
+              marginTop: "10px",
+            }}
+          >
+            <Form.Label style={{ fontWeight: "bold", fontSize: "1rem" }}>
+              Chính Sách Sử dụng:
+            </Form.Label>
             <ul style={{ listStyleType: "none", paddingLeft: "10px" }}>
               <li>
                 <a
                   href="/terms"
-                  style={{ color: "blue", textDecoration: "none", marginLeft: "5px" }}
+                  style={{
+                    color: "blue",
+                    textDecoration: "none",
+                    marginLeft: "5px",
+                  }}
                   onMouseEnter={(e) => (e.target.style.color = "red")}
                   onMouseLeave={(e) => (e.target.style.color = "blue")}
                 >
@@ -590,7 +810,11 @@ export default function ProductUser({ isLogin }) {
               <li>
                 <a
                   href="/rules"
-                  style={{ color: "blue", textDecoration: "none", marginLeft: "5px" }}
+                  style={{
+                    color: "blue",
+                    textDecoration: "none",
+                    marginLeft: "5px",
+                  }}
                   onMouseEnter={(e) => (e.target.style.color = "red")}
                   onMouseLeave={(e) => (e.target.style.color = "blue")}
                 >
@@ -600,7 +824,11 @@ export default function ProductUser({ isLogin }) {
               <li>
                 <a
                   href="/answerquestion"
-                  style={{ color: "blue", textDecoration: "none", marginLeft: "5px" }}
+                  style={{
+                    color: "blue",
+                    textDecoration: "none",
+                    marginLeft: "5px",
+                  }}
                   onMouseEnter={(e) => (e.target.style.color = "red")}
                   onMouseLeave={(e) => (e.target.style.color = "blue")}
                 >
@@ -614,64 +842,128 @@ export default function ProductUser({ isLogin }) {
         {/* Cột chứa sản phẩm */}
         <Col md={10}>
           <Row>
-            {sortedProducts.slice((currentPage - 1) * productsPerPage, currentPage * productsPerPage).map((p, index) => (
-              <Col key={index} md={3} xs={12} sm={6} style={{ marginBottom: "22px" }}>
-                <Card className="mb-4" style={{ display: "flex", flexDirection: "column", height: "100%" }}>
-                  <Card.Link
-                    href={`/product/${p.id}/detail`}
-                    style={{ height: "200px", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center" }}
+            {sortedProducts
+              .slice(
+                (currentPage - 1) * productsPerPage,
+                currentPage * productsPerPage
+              )
+              .map((p, index) => (
+                <Col
+                  key={index}
+                  md={3}
+                  xs={12}
+                  sm={6}
+                  style={{ marginBottom: "22px" }}
+                >
+                  <Card
+                    className="mb-4"
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      height: "100%",
+                    }}
                   >
-                    <Card.Img variant="top" src={p.image} alt={p.descreption} style={{ objectFit: "contain", width: "100%", height: "100%" }} />
-                  </Card.Link>
-                  <Card.Body style={{ flex: "1 1 auto" }}>
-                    <Card.Title className="text-center">
-                      <Link
-                        to={`/product/${p.id}/detail`}
-                        style={{ textDecoration: "none", fontWeight: "bold", fontSize: "1.5rem" }}
-                        onMouseEnter={(e) => (e.target.style.color = "orange")}
-                        onMouseLeave={(e) => (e.target.style.color = "blue")}
-                      >
-                        {p.name}
-                      </Link>
-                    </Card.Title>
-                    <Card.Text style={{ color: "red", fontWeight: "bold" }}>
-                      <span style={{ marginRight: "9px", marginLeft: "2px" }}>{p.price.toLocaleString("vi-VN", { style: "currency", currency: "VND" })}</span>
-                      <span style={{ textDecoration: "line-through", color: "gray", marginRight: "3px" }}>
-                        &nbsp;
-                        {((p.price * 100) / 87).toLocaleString("vi-VN", { style: "currency", currency: "VND" })}
-                      </span>{" "}
-                      <small style={{ color: "red", backgroundColor: "pink", borderRadius: "5px", padding: "2px 4px" }}>-14%</small>
-                    </Card.Text>
-                    <Card.Text>{p.descreption}</Card.Text>
-                  </Card.Body>
-                  <Button
-                    variant="success"
-                    onClick={() => handleAddToCart(p)}
-                    onMouseEnter={(e) => (e.target.style.color = "black")}
-                    onMouseLeave={(e) => (e.target.style.color = "white")}
-                  >
-                    Thêm vào giỏ hàng
-                  </Button>
-                  <Button
-                    style={{ margin: "5px" }}
-                    variant="warning"
-                    as={Link}
-                    to={`/product/${p.id}/detail`}
-                    onMouseEnter={(e) => (e.target.style.color = "white")}
-                    onMouseLeave={(e) => (e.target.style.color = "black")}
-                  >
-                    Xem chi tiết
-                  </Button>
-                </Card>
-              </Col>
-            ))}
+                    <Card.Link
+                      href={`/product/${p.id}/detail`}
+                      style={{
+                        height: "200px",
+                        overflow: "hidden",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <Card.Img
+                        variant="top"
+                        src={p.image}
+                        alt={p.descreption}
+                        style={{
+                          objectFit: "contain",
+                          width: "100%",
+                          height: "100%",
+                        }}
+                      />
+                    </Card.Link>
+                    <Card.Body style={{ flex: "1 1 auto" }}>
+                      <Card.Title className="text-center">
+                        <Link
+                          to={`/product/${p.id}/detail`}
+                          style={{
+                            textDecoration: "none",
+                            fontWeight: "bold",
+                            fontSize: "1.5rem",
+                          }}
+                          onMouseEnter={(e) =>
+                            (e.target.style.color = "orange")
+                          }
+                          onMouseLeave={(e) => (e.target.style.color = "blue")}
+                        >
+                          {p.name}
+                        </Link>
+                      </Card.Title>
+                      <Card.Text style={{ color: "red", fontWeight: "bold" }}>
+                        <span style={{ marginRight: "9px", marginLeft: "2px" }}>
+                          {p.price.toLocaleString("vi-VN", {
+                            style: "currency",
+                            currency: "VND",
+                          })}
+                        </span>
+                        <span
+                          style={{
+                            textDecoration: "line-through",
+                            color: "gray",
+                            marginRight: "3px",
+                          }}
+                        >
+                          &nbsp;
+                          {((p.price * 100) / 87).toLocaleString("vi-VN", {
+                            style: "currency",
+                            currency: "VND",
+                          })}
+                        </span>{" "}
+                        <small
+                          style={{
+                            color: "red",
+                            backgroundColor: "pink",
+                            borderRadius: "5px",
+                            padding: "2px 4px",
+                          }}
+                        >
+                          -14%
+                        </small>
+                      </Card.Text>
+                      <Card.Text>{p.descreption}</Card.Text>
+                    </Card.Body>
+                    <Button
+                      variant="success"
+                      onClick={() => handleAddToCart(p)}
+                      onMouseEnter={(e) => (e.target.style.color = "black")}
+                      onMouseLeave={(e) => (e.target.style.color = "white")}
+                    >
+                      Thêm vào giỏ hàng
+                    </Button>
+                    <Button
+                      style={{ margin: "5px" }}
+                      variant="warning"
+                      as={Link}
+                      to={`/product/${p.id}/detail`}
+                      onMouseEnter={(e) => (e.target.style.color = "white")}
+                      onMouseLeave={(e) => (e.target.style.color = "black")}
+                    >
+                      Xem chi tiết
+                    </Button>
+                  </Card>
+                </Col>
+              ))}
           </Row>
         </Col>
       </Row>
 
       {/* Phân trang */}
       <Row variant="round" className="mt-3">
-        <Pagination style={{ justifyContent: "center" }}>{renderPagination()}</Pagination>
+        <Pagination style={{ justifyContent: "center" }}>
+          {renderPagination()}
+        </Pagination>
       </Row>
     </div>
   );

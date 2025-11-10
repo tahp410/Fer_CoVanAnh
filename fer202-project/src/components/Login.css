@@ -1,0 +1,84 @@
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #e3f2fd, #e8f5e9);
+    padding: 20px;
+  }
+  
+  .login-card {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    padding: 40px 35px;
+    width: 100%;
+    max-width: 420px; /* ✅ Giới hạn chiều rộng form */
+    transition: all 0.3s ease;
+  }
+  
+  .login-card:hover {
+    transform: translateY(-3px);
+  }
+  
+  .login-icon {
+    font-size: 45px;
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .password-input-group {
+    position: relative;
+  }
+  
+  .password-input-group input {
+    padding-right: 40px;
+  }
+  
+  .show-password-btn {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    border: none;
+    background: none;
+    font-size: 18px;
+    cursor: pointer;
+    opacity: 0.6;
+  }
+  
+  .show-password-btn:hover {
+    opacity: 1;
+  }
+  
+  .login-btn {
+    background-color: #1976d2;
+    border: none;
+    font-weight: 600;
+    padding: 10px 0;
+  }
+  
+  .login-btn:hover {
+    background-color: #1565c0;
+  }
+  
+  .forgot-link {
+    color: #1976d2;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  
+  .forgot-link:hover {
+    text-decoration: underline;
+  }
+  
+  .register-link {
+    color: #c62828;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  
+  .register-link:hover {
+    text-decoration: underline;
+  }
+  

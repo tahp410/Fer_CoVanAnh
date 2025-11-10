@@ -1,0 +1,110 @@
+.product-detail-container {
+    padding: 40px 0;
+  }
+  
+  .product-detail-img {
+    width: 80%;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .product-name {
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  
+  .price-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 15px 0;
+  }
+  
+  .price {
+    color: red;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  
+  .old-price {
+    text-decoration: line-through;
+    color: gray;
+    font-size: 1rem;
+  }
+  
+  .action-buttons button {
+    margin-right: 10px;
+    font-weight: 500;
+  }
+  
+  .extra-buttons {
+    margin-top: 20px;
+  }
+  
+  .review-card {
+    margin-bottom: 15px;
+    border-left: 4px solid #007bff;
+  }
+  
+  .review-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .similar-products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  
+  .similar-card {
+    flex: 1 1 calc(25% - 15px);
+    text-align: center;
+    border-radius: 10px;
+    transition: transform 0.2s;
+  }
+  
+  .similar-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .similar-card img {
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .similar-info {
+    padding: 10px;
+  }
+  
+  .similar-name {
+    font-weight: 500;
+  }
+  
+  .similar-price {
+    color: red;
+    font-weight: bold;
+  }
+  
+  .report-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    z-index: 1000;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    width: 400px;
+  }
+  
+  .loading-container {
+    text-align: center;
+    padding: 100px;
+  }
+  
