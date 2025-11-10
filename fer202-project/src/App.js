@@ -9,8 +9,12 @@ import Footer from "./components/Footer";
 import { ThemeProvider } from "./components/ThemeProvider";
 import ProductUser from "./components/ProductUser";
 import StoreRules from "./hooks/StoreRules";
-import { Term } from '../src/hooks/Term';
-
+import { Term } from "../src/hooks/Term";
+import AccessDenied from "./components/AccessDenied";
+import ViewProfile from "./components/ViewProfile";
+import OrderTracking from "./components/OrderTracking";
+import OrderManagement from "./components/OrderManagement";
+import VerifyOrder from "./components/verifyOrder";
 export default function App() {
   const [isLogin, setIsLogin] = useState(false);
   const [products, setProducts] = useState([]);
@@ -38,6 +42,15 @@ export default function App() {
                 </>
               }
             />
+            <Route
+              path="/view-profile"
+              element={
+                <>
+                  <Header isLogin={isLogin} setIsLogin={setIsLogin} />
+                  <ViewProfile isLogin={isLogin} />
+                </>
+              }
+            />
 
             {/* <Route
               path="/"
@@ -51,6 +64,24 @@ export default function App() {
                 </>
               }
             /> */}
+            <Route
+              path="/product/ordermanagement"
+              element={
+                <>
+                  <Header isLogin={isLogin} setIsLogin={setIsLogin} />
+                  <OrderManagement />
+                </>
+              }
+            />
+            <Route
+              path="/verifyorder"
+              element={
+                <>
+                  <Header isLogin={isLogin} setIsLogin={setIsLogin} />
+                  <VerifyOrder />{" "}
+                </>
+              }
+            />
             <Route
               path="/"
               element={
@@ -84,6 +115,15 @@ export default function App() {
                 <>
                   <Header isLogin={isLogin} setIsLogin={setIsLogin} />
                   <StoreRules />
+                </>
+              }
+            />
+            <Route
+              path="/order-tracking"
+              element={
+                <>
+                  <Header isLogin={isLogin} setIsLogin={setIsLogin} />
+                  <OrderTracking />
                 </>
               }
             />
